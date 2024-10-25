@@ -1,0 +1,18 @@
+version: '3.8'  # Define the version of Docker Compose
+
+services:
+  postgres:
+    image: postgres:15  # Use a stable PostgreSQL image version
+    container_name: postgres_db  # Optional: Name the container
+    environment:
+      POSTGRES_USER: your_postgres_user
+      POSTGRES_PASSWORD: your_postgres_password
+      POSTGRES_DB: your_database_name
+    ports:
+      - "5432:5432"  # Map the default PostgreSQL port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist the database data
+
+volumes:
+  postgres_data:
+    driver: local  # Define a local volume for data persistence
